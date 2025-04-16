@@ -147,7 +147,7 @@ function ShoppingCheckout() {
               
 
             const captureResponse = await axios.post(
-              "${process.env.BASE_URL}/api/shop/order/capture-payment",
+              `"${import.meta.env.BASE_URL}/api/shop/order/capture-payment"`,
               paymentData
             );
       

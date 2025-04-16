@@ -19,7 +19,7 @@ export const createNewOrder = createAsyncThunk(
       console.log("🟢 createNewOrder method is being executed");
 
       const response = await axios.post(
-        "${process.env.BASE_URL}/api/shop/order/create",
+        `${import.meta.env.BASE_URL}/api/shop/order/create`,
         orderData
       );
 
@@ -47,7 +47,7 @@ export const createNewOrder = createAsyncThunk(
 export const getAllOrdersForAdmin = createAsyncThunk(
   "/order/getAllOrdersForAdmin",
   async () => {
-    const response = await axios.get(`${process.env.BASE_URL}/api/admin/orders/get`);
+    const response = await axios.get(`${import.meta.env.BASE_URL}/api/admin/orders/get`);
     return response.data;
   }
 );
@@ -60,7 +60,7 @@ export const getAllOrdersForAdmin = createAsyncThunk(
 export const getOrderDetailsForAdmin = createAsyncThunk(
   "/order/getOrderDetailsForAdmin",
   async (id) => {
-    const response = await axios.get(`${process.env.BASE_URL}/api/admin/orders/details/${id}`);
+    const response = await axios.get(`${import.meta.env.BASE_URL}/api/admin/orders/details/${id}`);
     console.log(response.data);
     return response.data;
   }
@@ -70,7 +70,7 @@ export const getOrderDetailsForAdmin = createAsyncThunk(
 export const updateOrderStatus = createAsyncThunk(
   "/order/updateOrderStatus",
   async ({ id, orderStatus }) => {
-    const response = await axios.put(`${process.env.BASE_URL}/api/admin/orders/update/${id}`, {
+    const response = await axios.put(`${import.meta.env.BASE_URL}/api/admin/orders/update/${id}`, {
       orderStatus,
     });
     return response.data;
@@ -82,7 +82,7 @@ export const capturePayment = createAsyncThunk(
   "/order/capturePayment",
   async ({ paymentId, orderId, signature }, { rejectWithValue }) => {
     try {
-      const response = await axios.post(`${process.env.BASE_URL}/api/shop/order/capture-payment`, {
+      const response = await axios.post(`${import.meta.env.BASE_URL}/api/shop/order/capture-payment`, {
         paymentId,
         orderId,
         razorpay_signature:signature,
