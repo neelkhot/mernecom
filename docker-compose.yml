@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  mongo:
+    image: mongo:6
+    container_name: mongo
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+  app:
+    build: .
+    container_name: mern-app
+    restart: always
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mongo
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/new
+      - JWT_SECRET=neelkhot
+      - PAYPAL_MODE=live
+      - CLOUDINARY_URL=cloudinary://731334667156119:uYmUBczRvyR2gwCx4KbXh6KENd0@dpjn2fs5f
+      - RAZORPAY_KEY_ID=rzp_test_3yKHpQHNBc8mSv
+      - RAZORPAY_KEY_SECRET=gCJCBkASUbO2EPiA4ocz8EdC
+      - FRONTEND_URL=http://localhost:5173
+      - BASE_URL=http://localhost:5000
+
+volumes:
+  mongo-data:
