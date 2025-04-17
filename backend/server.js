@@ -26,7 +26,7 @@ mongoose
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-const allowedOrigins = [process.env.CLIENT_URL,'https://mernecom-l4lz.vercel.app','*'];
+const allowedOrigins = [process.env.CLIENT_URL,'https://mernecom-l4lz.vercel.app','*','http://localhost/','http://localhost:80/','http://localhost'];
 
 app.use(
   cors({
