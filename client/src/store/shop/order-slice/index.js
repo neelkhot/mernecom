@@ -17,7 +17,7 @@ export const createNewOrder = createAsyncThunk(
   async (orderData, { rejectWithValue }) => {
     try {
       const response = await axios.post(
-        "${import.meta.env.BASE_URL}/api/shop/order/create",
+        `${import.meta.env.VITE_BASE_URL_API}/api/shop/order/create`,
         orderData
       );
 
@@ -34,7 +34,7 @@ export const getAllOrdersByUserId = createAsyncThunk(
   "/order/getAllOrdersByUserId",
   async (userId) => {
     const response = await axios.get(
-      `${import.meta.env.BASE_URL}/api/shop/order/list/${userId}`
+      `${import.meta.env.VITE_BASE_URL_API}/api/shop/order/list/${userId}`
     );
 
     return response.data;
@@ -45,7 +45,7 @@ export const getOrderDetails = createAsyncThunk(
   "/order/getOrderDetails",
   async (id) => {
     const response = await axios.get(
-      `${import.meta.env.BASE_URL}/api/shop/order/details/${id}`
+      `${import.meta.env.VITE_BASE_URL_API}/api/shop/order/details/${id}`
     );
 
     return response.data;
